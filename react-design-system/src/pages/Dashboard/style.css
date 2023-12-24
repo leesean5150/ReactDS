@@ -1,0 +1,10 @@
+.BodyContainer {
+  height: auto;
+  width: 64%;
+  padding: 30px;
+  background-color: #fff;
+  margin: auto;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 15px;
+}

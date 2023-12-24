@@ -1,0 +1,8 @@
+.bodyContainer {
+  position: abosulte;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-top: 5px;
+  width: 75%;
+}
