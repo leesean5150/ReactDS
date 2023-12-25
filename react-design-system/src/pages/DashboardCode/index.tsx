@@ -1,3 +1,18 @@
+import React from "react";
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+
+import "./style.css";
+
+hljs.registerLanguage("javascript", javascript);
+
+const DashboardCode = () => {
+  return (
+    <div className="bodyContainer">
+      <div className="codeBlock">
+        <pre>
+          <code className="codeBlock">
+            {`
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { Fragment } from "react";
@@ -135,3 +150,12 @@ const Dashboard = (props) => {
 };
 
 export { Dashboard };
+`}
+          </code>
+        </pre>
+      </div>
+    </div>
+  );
+};
+
+export { DashboardCode };

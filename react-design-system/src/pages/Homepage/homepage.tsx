@@ -1,21 +1,26 @@
 import React from "react";
 
-import {List} from "../../components/List/index.tsx"
+import { List } from "../../components/List-niche/index.tsx";
 
-import "./style.css"
+import "./style.css";
 
 const items = [
-  { id: 1, name: "Dashboard", hrefPreview:"/dashboard" },
-  { id: 2, name: "List", hrefPreview:"#"},
-  { id: 3, name: "Table", hrefPreview:"#"},
-]
+  {
+    id: 1,
+    name: "Dashboard",
+    hrefPreview: "/dashboard",
+    hrefCode: "/dashboard-code",
+    code: "dashboard",
+  },
+  { id: 2, name: "Table", hrefPreview: "#", code: "table" },
+];
 
 const Homepage = () => {
   return (
     <div className="bodyContainer">
-      <List items={items}/>
+      <List items={items} />
     </div>
   );
-}
+};
 
-export default Homepage;
+export { Homepage };
