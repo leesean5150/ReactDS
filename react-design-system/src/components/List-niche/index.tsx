@@ -15,7 +15,7 @@ const List = (props) => {
   return (
     <div className="overflow-hidden rounded-md bg-white shadow w-full">
       <ul className="divide-y divide-black-1000">
-        {props.items.map((item) => (
+        {props.items.filter((item) => item.name.toLowerCase().includes(props.search.toLowerCase())).map((item) => (
           <div className="flip-card" key={item.id}>
             <div className="flip-card-inner">
               <div className="flip-card-front">

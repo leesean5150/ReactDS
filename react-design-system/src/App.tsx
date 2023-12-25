@@ -20,8 +20,8 @@ function App() {
   return (
     <div className="App">
       <header className="AppHeader">
-        <button onClick={handleHome}>
-          <img src="/images/home.png" alt="" className="homeIcon"></img>
+        <button id="homeButton" onClick={handleHome}>
+          <img src="/images/home.png" alt="" id="homeIcon"></img>
         </button>
         <h1>React Design System</h1>
       </header>

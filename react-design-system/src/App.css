@@ -13,15 +13,16 @@
   color: white;
 }
 
-.homeIcon {
+#homeButton {
   position: absolute;
   left: 30px;
-  top: 3%;
-  padding: 0px;
+}
+
+#homeIcon {
   width: 30px;
 }
 
-.homeIcon:hover {
+#homeIcon:hover {
   background-color: grey;
   border-radius: 20%;
 }

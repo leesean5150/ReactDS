@@ -1,8 +1,15 @@
-.bodyContainer {
-  position: abosulte;
+#homepageContainer {
   left: 0;
   right: 0;
   margin: 0 auto;
   margin-top: 5px;
   width: 75%;
+  display: block;
+}
+
+.pageTitle {
+  font-size: 30px;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-left: 180px;
 }

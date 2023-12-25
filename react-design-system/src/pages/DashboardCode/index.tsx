@@ -8,11 +8,12 @@ hljs.registerLanguage("javascript", javascript);
 
 const DashboardCode = () => {
   return (
-    <div className="bodyContainer">
-      <div className="codeBlock">
-        <pre>
-          <code className="codeBlock">
-            {`
+    <div>
+      <div className="bodyContainer">
+        <div className="codeBlock">
+          <pre>
+            <code className="codeBlock">
+              {`
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { Fragment } from "react";
@@ -151,8 +152,9 @@ const Dashboard = (props) => {
 
 export { Dashboard };
 `}
-          </code>
-        </pre>
+            </code>
+          </pre>
+        </div>
       </div>
     </div>
   );
