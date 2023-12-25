@@ -10,9 +10,19 @@ const items = [
     name: "Dashboard",
     hrefPreview: "/dashboard",
     hrefCode: "/dashboard-code",
-    code: "dashboard",
   },
-  { id: 2, name: "Table", hrefPreview: "#", code: "table" },
+  {
+    id: 2,
+    name: "Table",
+    hrefPreview: "/table",
+    hrefCode: "/table-code",
+  },
+  {
+    id: 100,
+    name: "Test",
+    hrefPreview: "/test",
+    hrefCode: "/test",
+  },
 ];
 
 const Homepage = () => {
