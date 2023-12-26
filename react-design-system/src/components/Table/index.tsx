@@ -66,7 +66,7 @@ const Table = (props) => {
                           {props.rowAttributes.map((data) => (
                             <td
                               className={
-                                data == props.rowAttributes[0]
+                                data === props.rowAttributes[0]
                                   ? "whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-black sm:pl-0"
                                   : "whitespace-nowrap px-3 py-4 text-sm text-black-300"
                               }
