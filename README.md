@@ -6,6 +6,12 @@ This reposistory aims to provide a design system for reusable components in reac
 
 ## Getting started
 
+### Clone repository
+
+```shell
+https://github.com/leesean5150/ReactDS.git
+```
+
 ### Install typescript
 
 ```shell
