@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { CheckBoxFilter } from "../../components/CheckBoxFilter/index.tsx";
+import { CheckBoxFilter } from "../../components/CheckboxFilter/index.tsx";
 import { Table } from "../../components/Table/index.tsx";
 
 const CheckBoxFilterExample = () => {

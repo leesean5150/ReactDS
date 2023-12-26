@@ -1,34 +1,41 @@
 import React, { useState } from "react";
 
-import { List } from "../../components/List-niche/index.tsx";
+import { List } from "../../components/ListNiche/index.tsx";
 import { Searchbar } from "../../components/Searchbar/index.tsx";
 
 import "./style.css";
 
 const items = [
   {
-    id: 1,
-    name: "Checkbox filter with option for left most button",
+    id: "filterwithdisplay",
+    name: "Checkbox filter with active filters display",
+    hrefPreview: "/filterwithdisplay",
+    hrefCode: "/filterwithdisplay-code",
+    type: "Filter",
+  },
+  {
+    id: "checkboxfilter",
+    name: "Checkbox filter with option for dropdown menu on the left",
     hrefPreview: "/checkboxfilter",
     hrefCode: "/checkboxfilter-code",
     type: "Filter",
   },
   {
-    id: 2,
+    id: "dashboard",
     name: "Dashboard with company icon, notifications and profile dropdown",
     hrefPreview: "/dashboard",
     hrefCode: "/dashboard-code",
     type: "Dashboard",
   },
   {
-    id: 3,
+    id: "lightthemetable",
     name: "Light theme table with add button and edit button",
     hrefPreview: "/table",
     hrefCode: "/table-code",
     type: "Table",
   },
   {
-    id: 100,
+    id: "testcomponent",
     name: "Test component",
     hrefPreview: "/test",
     hrefCode: "/test",
