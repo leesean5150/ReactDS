@@ -1,0 +1,12 @@
+.codeBlock {
+    text-align: left;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: lightgrey;
+  }
+  
+  .bodyContainer {
+    display: flex;
+    justify-content: center;
+  }
+  

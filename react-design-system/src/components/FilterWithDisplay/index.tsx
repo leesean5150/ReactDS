@@ -1,77 +1,48 @@
 import * as React from "react";
-import { Fragment, useState } from "react";
+import { useState, Fragment } from "react";
 
-import {
-  Dialog,
-  Disclosure,
-  Menu,
-  Popover,
-  Transition,
-} from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Menu, Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
-const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-];
-const filters = [
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "new-arrivals", label: "All New Arrivals", checked: false },
-      { value: "tees", label: "Tees", checked: false },
-      { value: "objects", label: "Objects", checked: true },
-    ],
-  },
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: false },
-    ],
-  },
-  {
-    id: "sizes",
-    name: "Sizes",
-    options: [
-      { value: "s", label: "S", checked: false },
-      { value: "m", label: "M", checked: false },
-      { value: "l", label: "L", checked: false },
-    ],
-  },
-];
-const activeFilters = [{ value: "objects", label: "Objects" }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const FilterWithDisplay = () => {
-  const [open, setOpen] = useState(false);
+const FilterWithDisplay = (props) => {
+  const [filters, setFilters] = useState<string[]>([]);
+  const onSelectFilter = (selected) => {
+    props.handleSelect(selected);
+    if (filters.includes(selected)) {
+      setFilters((prev) => prev.filter((filter) => filter !== selected));
+    } else {
+      setFilters((prev) => [...prev, selected]);
+    }
+  };
+  const handleRemoveFilter = (filterToRemove) => {
+    props.handleRemove(filterToRemove);
+    const indexToRemove = filters.indexOf(filterToRemove);
+    const newFilters = filters
+      .slice(0, indexToRemove)
+      .concat(filters.slice(indexToRemove + 1));
+    setFilters(newFilters);
+  };
 
   return (
     <div className="bg-white mt-4">
       <section aria-labelledby="filter-heading">
-        <h2 id="filter-heading" className="sr-only">
-          Filters
-        </h2>
-
         <div className="border-b border-gray-200 bg-white pb-4">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                  Sort
-                  <ChevronDownIcon
-                    className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                </Menu.Button>
+                {props.leftMost && (
+                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                    {props.leftMostName}
+                    <ChevronDownIcon
+                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
+                )}
               </div>
 
               <Transition
@@ -85,17 +56,14 @@ const FilterWithDisplay = () => {
               >
                 <Menu.Items className="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1">
-                    {sortOptions.map((option) => (
-                      <Menu.Item key={option.name}>
+                    {props.leftFilter.map((option, optionIndex) => (
+                      <Menu.Item key={optionIndex}>
                         {({ active }) => (
                           <a
                             href={option.href}
                             className={classNames(
-                              option.current
-                                ? "font-medium text-gray-900"
-                                : "text-gray-500",
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm"
+                              "block px-4 py-2 text-sm font-medium text-gray-900"
                             )}
                           >
                             {option.name}
@@ -108,34 +76,25 @@ const FilterWithDisplay = () => {
               </Transition>
             </Menu>
 
-            <button
-              type="button"
-              className="inline-block text-sm font-medium text-gray-700 hover:text-gray-900 sm:hidden"
-              onClick={() => setOpen(true)}
-            >
-              Filters
-            </button>
-
             <div className="hidden sm:block">
               <div className="flow-root">
-                <Popover.Group className="-mx-4 flex items-center divide-x divide-gray-200">
-                  {filters.map((section, sectionIdx) => (
+                <Popover.Group className="hidden sm:flex sm:items-baseline sm:space-x-8">
+                  {props.rightFilters.map((section, sectionIdx) => (
                     <Popover
+                      as="div"
                       key={section.name}
-                      className="relative inline-block px-4 text-left"
+                      id={`desktop-menu-${sectionIdx}`}
+                      className="relative inline-block text-left"
                     >
-                      <Popover.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                        <span>{section.name}</span>
-                        {sectionIdx === 0 ? (
-                          <span className="ml-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
-                            1
-                          </span>
-                        ) : null}
-                        <ChevronDownIcon
-                          className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                          aria-hidden="true"
-                        />
-                      </Popover.Button>
+                      <div>
+                        <Popover.Button className="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                          <span>{section.name}</span>
+                          <ChevronDownIcon
+                            className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                            aria-hidden="true"
+                          />
+                        </Popover.Button>
+                      </div>
 
                       <Transition
                         as={Fragment}
@@ -158,7 +117,12 @@ const FilterWithDisplay = () => {
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
                                   type="checkbox"
-                                  defaultChecked={option.checked}
+                                  checked={
+                                    !filters.includes(option.value)
+                                      ? false
+                                      : true
+                                  }
+                                  onChange={(e) => onSelectFilter(option.value)}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
@@ -195,18 +159,19 @@ const FilterWithDisplay = () => {
 
             <div className="mt-2 sm:ml-4 sm:mt-0">
               <div className="-m-1 flex flex-wrap items-center">
-                {activeFilters.map((activeFilter) => (
+                {filters.map((activeFilter) => (
                   <span
-                    key={activeFilter.value}
-                    className="m-1 inline-flex items-center rounded-full border border-gray-200 bg-white py-1.5 pl-3 pr-2 text-sm font-medium text-gray-900"
+                    key={activeFilter}
+                    className="m-1 inline-flex items-center rounded-full border border-gray-200 bg-gray py-1.5 pl-3 pr-2 text-sm font-medium text-grey-900"
                   >
-                    <span>{activeFilter.label}</span>
+                    <span className="mb-1">{activeFilter}</span>
                     <button
                       type="button"
                       className="ml-1 inline-flex h-4 w-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
+                      onClick={(e) => handleRemoveFilter(activeFilter)}
                     >
                       <span className="sr-only">
-                        Remove filter for {activeFilter.label}
+                        Remove filter for {activeFilter}
                       </span>
                       <svg
                         className="h-2 w-2"

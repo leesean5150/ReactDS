@@ -6,7 +6,8 @@ import { CheckBoxFilterExample } from "./pages/CheckBoxFilterExample/index.tsx";
 import { CheckBoxFilterCode } from "./pages/CheckBoxFilterCode/index.tsx";
 import { DashboardExample } from "./pages/DashboardExample/dashboard.tsx";
 import { DashboardCode } from "./pages/DashboardCode/index.tsx";
-import { FilterWithDisplay } from "./components/CheckboxWithDisplay/index.tsx";
+import { FilterWithDisplayExample } from "./pages/FilterWithDisplayExample/index.tsx";
+import { FilterWithDisplayCode } from "./pages/FilterWithDisplayCode/index.tsx";
 import { TableExample } from "./pages/TableExample/index.tsx";
 import { TableCode } from "./pages/TableCode/index.tsx";
 import { Test } from "./pages/Test/index.tsx";
@@ -34,7 +35,8 @@ function App() {
         <Route path="checkboxfilter-code" element={<CheckBoxFilterCode />} />
         <Route path="dashboard/*" element={<DashboardExample />} />
         <Route path="dashboard-code" element={<DashboardCode />} />
-        <Route path="filterwithdisplay" element={<FilterWithDisplay />} />
+        <Route path="filterwithdisplay" element={<FilterWithDisplayExample />} />
+        <Route path="filterwithdisplay-code" element={<FilterWithDisplayCode />} />
         <Route path="table" element={<TableExample />} />
         <Route path="table-code" element={<TableCode />} />
         <Route path="test" element={<Test />} />

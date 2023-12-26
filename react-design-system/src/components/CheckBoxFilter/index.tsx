@@ -1,6 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
-import { Fragment } from "react";
+import { useState, Fragment } from "react";
 
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
