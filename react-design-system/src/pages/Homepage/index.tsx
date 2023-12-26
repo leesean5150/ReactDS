@@ -8,17 +8,17 @@ import "./style.css";
 const items = [
   {
     id: 1,
+    name: "Checkbox filter with option for left most button",
+    hrefPreview: "/checkboxfilter",
+    hrefCode: "/checkboxfilter-code",
+    type: "Filter",
+  },
+  {
+    id: 2,
     name: "Dashboard with company icon, notifications and profile dropdown",
     hrefPreview: "/dashboard",
     hrefCode: "/dashboard-code",
     type: "Dashboard",
-  },
-  {
-    id: 2,
-    name: "Filter",
-    hrefPreview: "/filter",
-    hrefCode: "/filter-code",
-    type: "Filter",
   },
   {
     id: 3,
