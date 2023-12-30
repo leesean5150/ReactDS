@@ -13,7 +13,7 @@ const List = (props) => {
     navigate(link);
   };
   return (
-    <div className="overflow-hidden rounded-md bg-white shadow w-full">
+    <div className="overflow-hidden rounded-md bg-white shadow w-full ">
       <ul className="divide-y divide-black-1000">
         {props.items
           .filter((item) =>
@@ -23,7 +23,7 @@ const List = (props) => {
             <div className="flip-card" key={item.id}>
               <div className="flip-card-inner">
                 <div className="flip-card-front">
-                  <li className="py-6 text-xl">{item.name}</li>
+                  <li className="py-9 text-xl">{item.name}</li>
                 </div>
                 <div className="flip-card-back">
                   <button
